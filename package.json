@@ -4,7 +4,8 @@
   "description": "My electron playground to learn about it",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": "https://github.com/ferranDelgado/electron-learning",
   "keywords": [
@@ -16,8 +17,13 @@
     "learning"
   ],
   "author": "fdelgado",
-  "license": "CC0-1.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "sqlite3": "^4.0.6"
+  },
   "devDependencies": {
-    "electron": "^4.0.4"
+    "electron": "^4.0.3",
+    "electron-builder": "^20.38.5",
+    "electron-rebuild": "^1.8.4"
   }
 }
