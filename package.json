@@ -19,11 +19,11 @@
   "author": "fdelgado",
   "license": "UNLICENSED",
   "dependencies": {
-    "sqlite3": "^4.0.6"
+    "sqlite3": "4.0.6"
   },
   "devDependencies": {
-    "electron": "^4.0.3",
-    "electron-builder": "^20.38.5",
-    "electron-rebuild": "^1.8.4"
+    "electron": "4.0.3",
+    "electron-builder": "20.38.5",
+    "electron-rebuild": "1.8.4"
   }
 }
