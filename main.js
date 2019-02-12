@@ -31,7 +31,13 @@ function createWindow () {
 ipc.on('new-row', function (event, arg) {
   bookshelf.insert(arg, function (result) {
     mainWindow.webContents.send('refresh-rows', result)
-  })  
+  })
+})
+
+ipc.on('sqlite-refresh', function (event, arg) {
+  bookshelf.select(function (result) {
+    mainWindow.webContents.send('refresh-rows', result)
+  })
 })
 
 // This method will be called when Electron has finished

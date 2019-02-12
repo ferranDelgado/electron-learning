@@ -41,13 +41,11 @@
    
 
     ipcRenderer.on('refresh-rows', function (event, arg) {
-      console.log(event)
       refresh(arg)
     })
 
     window.onload = function () {
-      var btn = document.getElementById("add-row-btn");
-      btn.addEventListener("click", addRow);
+      ipcRenderer.send('sqlite-refresh')
     }
 
     function refresh(books) {
