@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
-const { bookshelf } = require('./sandbox/sqlite.js')
+const { bookshelf } = require('./sandbox/sqlite/sqlite.js')
+const ipc = require('electron').ipcMain
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -10,26 +11,28 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
-  testSqliteCode()
-
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
+  bookshelf.init()
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
+    bookshelf.close()
     mainWindow = null
   })
 }
 
-function testSqliteCode() {
-  bookshelf.hello()
-}
+ipc.on('new-row', function (event, arg) {
+  bookshelf.insert(arg, function (result) {
+    mainWindow.webContents.send('refresh-rows', result)
+  })  
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
