@@ -1,0 +1,23 @@
+{
+  "name": "learning-electron",
+  "version": "1.0.0",
+  "description": "My electron playground to learn about it",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/ferranDelgado/electron-learning",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo",
+    "learning"
+  ],
+  "author": "fdelgado",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^4.0.4"
+  }
+}
