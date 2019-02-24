@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const { bookshelf } = require('./sandbox/sqlite/sqlite.js')
+const { sequelizerController } = require('./sandbox/sequelizer/sequelizerController.js')
 const ipc = require('electron').ipcMain
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -16,7 +17,7 @@ function createWindow () {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
-
+  sequelizerController.init(mainWindow)
   bookshelf.init()
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
